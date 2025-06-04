@@ -1,0 +1,34 @@
+.header-component--layout {
+    width: 100%;
+    margin: 0;
+}
+
+.header-component--content {
+    margin: 0.875rem 0.875rem 6.0625rem 0.875rem;
+    padding: 0 .5rem;
+    border-radius: 0.9375rem;
+    min-height: 8.25rem;
+    width: calc(100% - 1.75rem);
+    background-color: #777777;
+}
+
+.header-component--title {
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+
+@media screen and (min-width: 1450px) {
+    .header-component--layout {
+        max-width: 91.125rem;
+        margin: 3.4375rem auto;
+    }
+
+    .header-component--title {
+        font-size: 6rem;        
+    }
+}
+
