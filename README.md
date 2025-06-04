@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Тестовое задание **React Developer (Next.js)**
 
-## Getting Started
+Были выполнены следующие требования:
 
-First, run the development server:
+- визуал по фигме [https://www.figma.com/file/XIYVl8ICFkdl3HJZcc8o8B/тестовое?type=design&node-id=0%3A1&mode=design&t=6xUI2e3VtlUzDocD-1](https://www.figma.com/file/XIYVl8ICFkdl3HJZcc8o8B/%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5?type=design&node-id=0%3A1&mode=design&t=6xUI2e3VtlUzDocD-1)
+- должен быть адаптирован под мобильные устройства и планшеты
+- наполнение контентом отзывов из html обернутого в json
+- наполнение контентом товары по апи
+    - показывать первую страницу сразу
+    - остальные страницы подгружать ajax запросом, по мере прокрутки вниз
+- при нажатии на кнопку "купить", она должна меняться на кнопки + и - и поле для ввода кол-ва товара, значение поля должно быть 1, кнопки должны добавлять отбавлять товар, так же должна быть возможность вписать в поле для ввода любое кол-во.
+- при изменении кол-ва какого-либо из товаров должна меняться информация в корзине (та что над полем с телефоном)
+- набранные товары и введенный номер телефона должны сохраняться при перезагрузки страницы
+- маска в поле для телефона
+- при нажатии кнопки "заказать" идет проверка того что телефон полностью введен
+    - если всё хорошо - отправлять запрос на сервер
+    - если есть ошибки - подсветить соответствующие поля красным (поле номера телефона)
+- после отправки запроса и получения ответа от сервера отобразить попап что всё успешно (сделать попап в стиле самого сайта)
+- проявлении инициативы по улучшению ux на месте. например добавить прилоадеры пока грузится контент.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Для запуска проекта нужно выполнить ряд действий:
+- разместить проект в удобную для вас папку и использовать команду ```npm install``` либо ```yarn i```
+- создать переменные окружения
+    - в коренвой папке файлом ```.env```
+    - в переменных окреженния оперционной системы
+  ```.env``` должен включать следующие переменные
+  ```
+  NEXT_PUBLIC_API_URL=https://example.com
+  ```
+- использовать команду ```npm run dev``` или ```yarn dev``` для запуска приложения в режиме разработки
+
+Все скрипты для этого проекта
+```json
+"scripts": {
+  "dev": "next dev --turbopack",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## О проекте
+В проекте использовалось только то что было из коробки, сторонние бибилеотеки не оиспользовались.
+Хранение данных корзины реализованны через localStorage и провайдеры, так как апи не хранит данные о корзине покупателя.
+Так же были добавлены прелоадеры для изображений, особенно пригодились для ссылок на изображения у которым нет доступа))
+Отчистку корзины не делал, так как пользователь после отправки заявки на товар по другому и не сможет посмотреть, что он заказал, т.к. нет истории заказов. Дорабатывать ее и так же хранить в localStorage я не решился, из-за ограничений на данные, да и в целом такое сохранение очень сильно режет скорость работы приложения.
